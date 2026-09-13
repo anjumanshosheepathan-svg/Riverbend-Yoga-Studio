@@ -1,0 +1,568 @@
+/* ==========================================================================
+   Riverbend Yoga Studio — styles.css
+   Touchstone 3: Visual Design and Responsive Layout
+   --------------------------------------------------------------------------
+   DESIGN SYSTEM
+   Colors (4):  Cream #F7F4EF | Deep Teal #1F4E4A | Clay #A85A2B | Charcoal #2B2B28
+   Fonts  (2):  Lora (serif, headings) | Source Sans 3 (sans-serif, body/UI)
+   Approach:    Mobile-first. Flexbox for all layout. Media queries at
+                40em, 48em, and 64em to widen the layout on larger screens.
+   ========================================================================== */
+
+/* ---------- 1. DESIGN TOKENS ---------------------------------------------- */
+:root {
+  /* Palette — 4 main colors (plus tints of the same hues for surfaces) */
+  --color-cream:     #F7F4EF;   /* page background */
+  --color-surface:   #FFFDF9;   /* lighter tint of cream, used for cards */
+  --color-teal:      #1F4E4A;   /* primary: header, footer, headings */
+  --color-teal-soft: #E6EEEC;   /* tint of teal for quiet background bands */
+  --color-clay:      #A85A2B;   /* accent: buttons, links, rules */
+  --color-charcoal:  #2B2B28;   /* body text */
+
+  /* Type */
+  --font-heading: "Lora", Georgia, "Times New Roman", serif;
+  --font-body: "Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif;
+
+  /* Spacing scale */
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+
+  /* Other */
+  --radius: 6px;
+  --max-width: 68rem;
+  --border-soft: 1px solid rgba(31, 78, 74, 0.18);
+}
+
+/* ---------- 2. RESET / BASE ---------------------------------------------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+  font-family: var(--font-body);
+  font-size: 1rem;          /* 16px base, scales up in media queries */
+  line-height: 1.65;        /* generous leading for scannable text */
+}
+
+img,
+video { max-width: 100%; height: auto; display: block; }
+
+audio { width: 100%; }
+
+/* ---------- 3. TYPOGRAPHY & HIERARCHY ------------------------------------ */
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  color: var(--color-teal);
+  line-height: 1.2;
+  margin: 0 0 var(--space-sm);
+}
+
+h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  border-bottom: 3px solid var(--color-clay);   /* accent rule anchors the page title */
+  padding-bottom: var(--space-sm);
+}
+
+h2 { font-size: 1.4rem; font-weight: 700; margin-top: var(--space-lg); }
+
+h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: var(--font-body);   /* sans at level 3 = clear visual step down */
+  letter-spacing: 0.01em;
+  color: var(--color-clay);
+  text-transform: none;
+}
+
+p, li, dd, dt, td, th { font-size: 1rem; }
+
+p { margin: 0 0 var(--space-md); max-width: 68ch; }  /* comfortable line length */
+
+strong { color: var(--color-teal); }
+
+a {
+  color: var(--color-clay);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+a:hover { color: var(--color-teal); }
+
+/* ---------- 4. SKIP LINK + VISIBLE FOCUS (accessibility) ----------------- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--color-clay);
+  color: #FFFDF9;
+  padding: var(--space-sm) var(--space-md);
+  z-index: 100;
+  text-decoration: none;
+}
+.skip-link:focus {
+  left: var(--space-sm);
+  top: var(--space-sm);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--color-clay);
+  outline-offset: 2px;
+}
+
+/* ---------- 5. HEADER + NAVIGATION (Flexbox) ---------------------------- */
+.site-header {
+  background-color: var(--color-teal);
+  color: var(--color-surface);
+  padding: var(--space-md);
+
+  /* MOBILE: stack brand above nav */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  align-items: flex-start;
+}
+
+.brand { display: flex; flex-direction: column; gap: 2px; }
+
+.brand-name {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--color-surface);
+}
+
+.brand-tagline {
+  margin: 0;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #DCE8E5;   /* soft tint of teal — still 7:1+ on the teal bar */
+}
+
+.site-nav { width: 100%; }
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;   /* MOBILE: full-width stacked links */
+  gap: 2px;
+}
+
+.nav-list a {
+  display: block;
+  padding: 0.7rem var(--space-sm);   /* ~44px tall touch target */
+  color: var(--color-surface);
+  text-decoration: none;
+  font-weight: 600;
+  border-left: 4px solid transparent;
+  border-radius: 2px;
+}
+
+.nav-list a:hover {
+  background-color: rgba(255, 253, 249, 0.12);
+  border-left-color: var(--color-clay);
+  color: var(--color-surface);
+}
+
+.nav-list a[aria-current="page"] {
+  border-left-color: var(--color-clay);
+  background-color: rgba(255, 253, 249, 0.16);
+}
+
+/* ---------- 6. MAIN LAYOUT CONTAINERS ----------------------------------- */
+.site-main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md) var(--space-xl);
+}
+
+.section { margin-bottom: var(--space-xl); }
+
+.section-band {              /* quiet tinted band to separate long pages */
+  background-color: var(--color-teal-soft);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+}
+
+.lead {
+  font-size: 1.05rem;
+  color: var(--color-teal);
+  font-weight: 600;
+  max-width: 60ch;
+}
+
+/* ---------- 7. HERO ------------------------------------------------------ */
+.hero {
+  display: flex;
+  flex-direction: column;   /* MOBILE: image below text */
+  gap: var(--space-md);
+  background-color: var(--color-surface);
+  border: var(--border-soft);
+  border-left: 6px solid var(--color-clay);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+.hero-text { flex: 1 1 auto; }
+.hero-media { flex: 1 1 auto; }
+.hero img { border-radius: var(--radius); }
+
+/* ---------- 8. CARD ROWS (Flexbox) ------------------------------------- */
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.card {
+  flex: 1 1 100%;           /* MOBILE: one card per row */
+  background-color: var(--color-surface);
+  border: var(--border-soft);
+  border-top: 4px solid var(--color-clay);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+}
+
+.card h3 { margin-top: 0; }
+.card ul { margin: 0; padding-left: 1.1rem; }
+.card li { margin-bottom: 0.35rem; }
+
+.card-meta {
+  font-size: 0.9rem;
+  color: var(--color-teal);
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+/* ---------- 9. FIGURES, PICTURE, MEDIA BLOCKS -------------------------- */
+figure {
+  margin: 0 0 var(--space-lg);
+  background-color: var(--color-surface);
+  border: var(--border-soft);
+  border-radius: var(--radius);
+  padding: var(--space-sm);
+}
+
+figcaption {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--color-teal);
+  padding: var(--space-sm) var(--space-xs) 0;
+  border-top: 2px solid var(--color-clay);
+  margin-top: var(--space-sm);
+}
+
+.media-block {
+  background-color: var(--color-teal-soft);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+}
+
+.transcript {
+  background-color: var(--color-surface);
+  border-left: 4px solid var(--color-teal);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.95rem;
+}
+
+/* ---------- 10. TABLES (scroll instead of squeeze on phones) ----------- */
+.table-scroll { overflow-x: auto; margin-bottom: var(--space-md); }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 32rem;
+  background-color: var(--color-surface);
+}
+
+caption {
+  caption-side: top;
+  text-align: left;
+  font-weight: 600;
+  color: var(--color-teal);
+  padding-bottom: var(--space-xs);
+}
+
+th, td {
+  border: 1px solid rgba(31, 78, 74, 0.2);
+  padding: var(--space-sm);
+  text-align: left;
+  vertical-align: top;
+}
+
+thead th { background-color: var(--color-teal); color: var(--color-surface); }
+tbody th { background-color: var(--color-teal-soft); color: var(--color-teal); }
+tbody tr:nth-child(even) td { background-color: #F4F1EC; }
+
+/* ---------- 11. DEFINITION LIST (policies) ----------------------------- */
+dl { margin: 0 0 var(--space-md); }
+dt { font-weight: 700; color: var(--color-teal); margin-top: var(--space-sm); }
+dd { margin: 0 0 var(--space-xs) 0; padding-left: var(--space-md); }
+
+/* ---------- 12. FORMS (Flexbox) ---------------------------------------- */
+.request-form {
+  background-color: var(--color-surface);
+  border: var(--border-soft);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+  max-width: 46rem;
+}
+
+fieldset {
+  border: none;
+  border-top: 2px solid var(--color-clay);
+  margin: 0 0 var(--space-lg);
+  padding: var(--space-md) 0 0;
+}
+
+legend {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-teal);
+  padding: 0 var(--space-xs) 0 0;
+}
+
+.field-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.field {
+  flex: 1 1 100%;           /* MOBILE: one field per row */
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.field label { font-weight: 600; color: var(--color-teal); font-size: 0.95rem; }
+
+.hint { font-size: 0.85rem; color: #4A4A45; margin: 0; }
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-charcoal);
+  background-color: #FFFFFF;
+  border: 1px solid rgba(31, 78, 74, 0.45);
+  border-radius: var(--radius);
+  padding: 0.6rem var(--space-sm);
+  width: 100%;
+  min-height: 44px;         /* easy to tap on a phone */
+}
+
+textarea { min-height: 8rem; resize: vertical; }
+
+input:focus,
+select:focus,
+textarea:focus { border-color: var(--color-clay); }
+
+/* Radio + checkbox rows */
+.choice-list {
+  display: flex;
+  flex-direction: column;   /* MOBILE: stacked choices */
+  gap: var(--space-xs);
+}
+
+.choice {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  background-color: var(--color-cream);
+  border: 1px solid rgba(31, 78, 74, 0.15);
+  border-radius: var(--radius);
+  padding: 0.6rem var(--space-sm);
+}
+
+.choice input { margin-top: 0.25rem; width: 1.15rem; height: 1.15rem; flex: none; }
+.choice label { font-weight: 500; color: var(--color-charcoal); }
+
+/* Buttons */
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+button {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: var(--radius);
+  padding: 0.75rem var(--space-lg);
+  min-height: 44px;
+  cursor: pointer;
+  flex: 1 1 100%;           /* MOBILE: full-width buttons */
+}
+
+button[type="submit"] {
+  background-color: var(--color-clay);   /* 5:1 contrast with its light text */
+  color: #FFFDF9;
+  border: 2px solid var(--color-clay);
+}
+button[type="submit"]:hover { background-color: #8C4A22; border-color: #8C4A22; }
+
+button[type="reset"] {
+  background-color: transparent;
+  color: var(--color-teal);
+  border: 2px solid var(--color-teal);
+}
+button[type="reset"]:hover { background-color: var(--color-teal-soft); }
+
+/* ---------- 13. FOOTER (Flexbox) --------------------------------------- */
+.site-footer {
+  background-color: var(--color-teal);
+  color: var(--color-surface);
+  padding: var(--space-lg) var(--space-md);
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;   /* MOBILE: stacked columns */
+  gap: var(--space-lg);
+}
+
+.footer-col { flex: 1 1 auto; }
+
+.site-footer h2 {
+  color: var(--color-surface);
+  font-size: 1.15rem;
+  margin-top: 0;
+}
+
+.site-footer h3 {
+  color: #DCE8E5;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-xs);
+}
+
+.site-footer p,
+.site-footer address,
+.site-footer li { color: var(--color-surface); font-size: 0.95rem; }
+
+.site-footer address { font-style: normal; line-height: 1.8; }
+
+.site-footer a { color: #F2D9C6; }          /* light clay tint, high contrast on teal */
+.site-footer a:hover { color: var(--color-surface); }
+
+.footer-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.footer-bottom {
+  max-width: var(--max-width);
+  margin: var(--space-lg) auto 0;
+  border-top: 1px solid rgba(255, 253, 249, 0.25);
+  padding-top: var(--space-sm);
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   14. MEDIA QUERIES — progressive enhancement for larger screens
+   ========================================================================== */
+
+/* --- 40em (≈640px): small tablets. Nav becomes a horizontal row. --- */
+@media screen and (min-width: 40em) {
+  body { font-size: 1.05rem; }
+
+  .site-header {
+    flex-direction: row;              /* brand left, nav right */
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .site-nav { width: auto; }
+
+  .nav-list {
+    flex-direction: row;              /* horizontal navigation */
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  .nav-list a {
+    border-left: none;
+    border-bottom: 4px solid transparent;
+    padding: 0.5rem var(--space-sm);
+  }
+
+  .nav-list a:hover,
+  .nav-list a[aria-current="page"] { border-bottom-color: var(--color-clay); }
+
+  .form-actions button { flex: 0 0 auto; }
+}
+
+/* --- 48em (≈768px): cards go multi-column; choices sit two-up. --- */
+@media screen and (min-width: 48em) {
+  h1 { font-size: 2.3rem; }
+  h2 { font-size: 1.65rem; }
+
+  .site-main { padding: var(--space-xl) var(--space-lg); }
+
+  .card { flex: 1 1 17rem; }          /* 2–3 cards per row instead of stacked */
+
+  .field { flex: 1 1 15rem; }         /* name + email sit side by side */
+
+  .choice-list { flex-direction: row; flex-wrap: wrap; }
+  .choice { flex: 1 1 14rem; }
+
+  .section-band,
+  .media-block,
+  .request-form { padding: var(--space-lg); }
+
+  .footer-inner { flex-direction: row; justify-content: space-between; }
+}
+
+/* --- 64em (≈1024px): hero becomes two columns; wider gutters. --- */
+@media screen and (min-width: 64em) {
+  .hero {
+    flex-direction: row;              /* text left, responsive image right */
+    align-items: center;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+  }
+  .hero-text { flex: 1 1 55%; }
+  .hero-media { flex: 1 1 45%; }
+
+  .site-main { padding: var(--space-xl) var(--space-lg) 4rem; }
+}
+
+/* --- Respect users who prefer reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
