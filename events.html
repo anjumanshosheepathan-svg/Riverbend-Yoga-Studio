@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workshops &amp; Events | Riverbend Yoga Studio</title>
+  <meta name="description" content="See this month's Riverbend Yoga Studio workshops and request a spot using our short interest form.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="brand">
+      <p class="brand-name">Riverbend Yoga Studio</p>
+      <p class="brand-tagline">Breathe. Move. Belong.</p>
+    </div>
+
+    <nav class="site-nav" aria-label="Main site navigation">
+      <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Classes &amp; Services</a></li>
+        <li><a href="about.html">About Our Studio</a></li>
+        <li><a href="events.html" aria-current="page">Workshops &amp; Events</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="site-main" id="main-content">
+    <h1>Workshops and Events</h1>
+
+    <p class="lead">Workshops are capped at twelve students, so there is time for questions.</p>
+
+    <p>
+      Requesting a spot does not commit you to payment — we will confirm availability first and
+      answer any questions before you decide.
+    </p>
+
+    <figure>
+      <img src="images/yoga-workshop.jpg"
+           alt="A small group of students sitting in a circle with bolsters and blankets during a restorative workshop at Riverbend Yoga Studio."
+           width="900" height="520">
+      <figcaption>
+        Students settle in at our Rest &amp; Restore workshop, where every pose is fully supported
+        with bolsters and blankets.
+      </figcaption>
+    </figure>
+
+    <section class="section" aria-labelledby="monthly-heading">
+      <h2 id="monthly-heading">This Month's Workshops</h2>
+
+      <ul class="card-grid">
+        <li class="card">
+          <h3>Yoga Basics: Your First Four Poses</h3>
+          <p class="card-meta">Saturday, March 7 · 10:00–11:30 a.m.</p>
+          <p>A no-pressure introduction to standing, seated, and reclining shapes, plus how to use blocks and straps. No experience needed.</p>
+        </li>
+        <li class="card">
+          <h3>Rest &amp; Restore</h3>
+          <p class="card-meta">Friday, March 13 · 6:30–8:00 p.m.</p>
+          <p>Six supported resting poses held for several minutes each, with dim lighting and optional unscented eye pillows.</p>
+        </li>
+        <li class="card">
+          <h3>Yoga at Your Desk</h3>
+          <p class="card-meta">Wednesday, March 18 · 12:00–12:45 p.m.</p>
+          <p>A lunchtime session of seated shoulder, neck, and wrist relief you can repeat at work. Street clothes welcome.</p>
+        </li>
+        <li class="card">
+          <h3>Chair Yoga for Strength and Balance</h3>
+          <p class="card-meta">Tuesday, March 24 · 9:30–10:45 a.m.</p>
+          <p>Designed with older adults in mind, this workshop builds steadiness using a chair for support throughout.</p>
+        </li>
+        <li class="card">
+          <h3>Breath and Sleep</h3>
+          <p class="card-meta">Sunday, March 29 · 4:00–5:15 p.m.</p>
+          <p>Learn three simple breathing practices, including the one featured on our <a href="index.html">home page</a>, to use at bedtime.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section" aria-labelledby="form-heading">
+      <h2 id="form-heading">Request a Spot</h2>
+      <p>
+        Fill out the short form below and a teacher will reply within one business day. Fields marked
+        “required” must be completed. We never share your information.
+      </p>
+
+      <form class="request-form" action="#" method="post">
+
+        <fieldset>
+          <legend>Your contact information</legend>
+          <div class="field-row">
+            <div class="field">
+              <label for="full-name">Full name (required)</label>
+              <input type="text" id="full-name" name="full-name" autocomplete="name"
+                     minlength="2" maxlength="60" required>
+            </div>
+
+            <div class="field">
+              <label for="email">Email address (required)</label>
+              <input type="email" id="email" name="email" autocomplete="email"
+                     placeholder="name@example.com" required>
+            </div>
+
+            <div class="field">
+              <label for="phone">Phone number (optional)</label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel"
+                     pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                     title="Enter your phone number in the format 612-555-0142">
+              <p class="hint">Format: 612-555-0142</p>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Class or event interest</legend>
+          <div class="field-row">
+            <div class="field">
+              <label for="interest">Which class or workshop interests you? (required)</label>
+              <select id="interest" name="interest" required>
+                <option value="">Please choose an option</option>
+                <optgroup label="Workshops">
+                  <option value="basics">Yoga Basics: Your First Four Poses</option>
+                  <option value="restore">Rest &amp; Restore</option>
+                  <option value="desk">Yoga at Your Desk</option>
+                  <option value="chair">Chair Yoga for Strength and Balance</option>
+                  <option value="breath">Breath and Sleep</option>
+                </optgroup>
+                <optgroup label="Regular classes and sessions">
+                  <option value="gentle">Gentle Yoga class</option>
+                  <option value="vinyasa">Vinyasa class</option>
+                  <option value="restorative">Restorative class</option>
+                  <option value="private">Private session</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="preferred-date">Preferred date to attend (required)</label>
+              <input type="date" id="preferred-date" name="preferred-date"
+                     min="2026-03-01" max="2026-06-30" required>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Your experience level (required)</legend>
+          <div class="choice-list">
+            <div class="choice">
+              <input type="radio" id="level-new" name="experience-level" value="new" required>
+              <label for="level-new">Brand new to yoga</label>
+            </div>
+            <div class="choice">
+              <input type="radio" id="level-returning" name="experience-level" value="returning">
+              <label for="level-returning">Returning after a break</label>
+            </div>
+            <div class="choice">
+              <input type="radio" id="level-regular" name="experience-level" value="regular">
+              <label for="level-regular">Practicing regularly</label>
+            </div>
+            <div class="choice">
+              <input type="radio" id="level-experienced" name="experience-level" value="experienced">
+              <label for="level-experienced">Experienced student or teacher</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Preferred contact method (required)</legend>
+          <div class="choice-list">
+            <div class="choice">
+              <input type="radio" id="contact-email" name="contact-method" value="email" required>
+              <label for="contact-email">Email</label>
+            </div>
+            <div class="choice">
+              <input type="radio" id="contact-phone" name="contact-method" value="phone">
+              <label for="contact-phone">Phone call</label>
+            </div>
+            <div class="choice">
+              <input type="radio" id="contact-text" name="contact-method" value="text">
+              <label for="contact-text">Text message</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Accommodations we can prepare (optional)</legend>
+          <div class="choice-list">
+            <div class="choice">
+              <input type="checkbox" id="chair-support" name="accommodations" value="chair-support">
+              <label for="chair-support">I would like a chair-supported option</label>
+            </div>
+            <div class="choice">
+              <input type="checkbox" id="props" name="accommodations" value="extra-props">
+              <label for="props">Please set out extra blocks and bolsters</label>
+            </div>
+            <div class="choice">
+              <input type="checkbox" id="fragrance-free" name="accommodations" value="fragrance-free">
+              <label for="fragrance-free">I need unscented props only</label>
+            </div>
+            <div class="choice">
+              <input type="checkbox" id="near-door" name="accommodations" value="near-door">
+              <label for="near-door">I prefer a mat space near the door</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Anything else we should know</legend>
+          <div class="field-row">
+            <div class="field">
+              <label for="message">Your message (optional, up to 500 characters)</label>
+              <textarea id="message" name="message" rows="6" maxlength="500"
+                        placeholder="Injuries, goals, scheduling questions, or anything that would help us welcome you."></textarea>
+            </div>
+          </div>
+          <div class="choice-list">
+            <div class="choice">
+              <input type="checkbox" id="newsletter" name="newsletter" value="yes">
+              <label for="newsletter">Email me the monthly workshop schedule</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="form-actions">
+          <button type="submit">Send my request</button>
+          <button type="reset">Clear the form</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="section section-band" aria-labelledby="visit-heading">
+      <h2 id="visit-heading">Where and When to Find Us</h2>
+      <p>
+        Riverbend Yoga Studio is located at 412 Riverbend Avenue, Suite 2, on the ground floor with a
+        step-free entrance. Metered street parking and the Route 14 bus stop are directly outside.
+      </p>
+      <h3>Front desk hours</h3>
+      <ul>
+        <li>Monday–Thursday: 8:00 a.m. – 7:30 p.m.</li>
+        <li>Friday: 8:00 a.m. – 6:00 p.m.</li>
+        <li>Saturday: 8:00 a.m. – 5:00 p.m.</li>
+        <li>Sunday: 3:00 p.m. – 6:00 p.m.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h2>Visit Riverbend Yoga Studio</h2>
+        <address>
+          412 Riverbend Avenue, Suite 2<br>
+          Riverbend, MN 55404<br>
+          Phone: <a href="tel:+16125550142">612-555-0142</a><br>
+          Email: <a href="mailto:hello@riverbendyoga.example">hello@riverbendyoga.example</a>
+        </address>
+      </div>
+      <div class="footer-col">
+        <h3>Before You Arrive</h3>
+        <p>Doors open 20 minutes before each class. Street-level entrance with no stairs, and all props are provided.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Site Pages</h3>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Classes &amp; Services</a></li>
+            <li><a href="about.html">About Our Studio</a></li>
+            <li><a href="events.html">Workshops &amp; Events</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <p class="footer-bottom">&copy; 2026 Riverbend Yoga Studio. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
