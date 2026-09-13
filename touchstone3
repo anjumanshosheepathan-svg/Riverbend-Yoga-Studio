@@ -1,0 +1,16 @@
+riverbend-yoga-studio/
+├── index.html
+├── services.html
+├── about.html
+├── events.html
+├── css/
+│   └── styles.css
+├── images/
+│   ├── yoga-studio.jpg
+│   ├── yoga-instructor.jpg
+│   ├── yoga-workshop.jpg
+│   ├── yoga-feature-small.jpg
+│   └── yoga-feature-large.jpg
+└── media/
+    ├── yoga-breathing.mp3
+    └── yoga-intro.mp4
